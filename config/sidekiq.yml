@@ -1,0 +1,13 @@
+:queues:
+  - critical
+  - default
+  - low
+
+:scheduler:
+  :enabled: true
+  :schedule:
+    empire_flippers_sync:
+      every: "30s"
+      class: EmpireFlippersSyncWorker
+      queue: default
+      description: "Fetch and sync Empire Flippers For Sale listings"

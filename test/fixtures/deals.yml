@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  listing_num: 1
+  last_seen: 2026-03-23
+  status: MyString
+  hubspot_id: MyString
+  summary: MyString
+
+two:
+  title: MyString
+  listing_num: 1
+  last_seen: 2026-03-23
+  status: MyString
+  hubspot_id: MyString
+  summary: MyString

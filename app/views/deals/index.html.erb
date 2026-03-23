@@ -1,0 +1,59 @@
+<% content_for :title, "Empire Flippers Deals" %>
+
+<div class="page-wrapper">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Empire Flippers Listings</h1>
+      <span class="badge"><%= @deals.count %> deals</span>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <% if @deals.empty? %>
+      <div class="empty-state">
+        <p>No deals synced yet. The background job runs every 30 seconds.</p>
+      </div>
+    <% else %>
+      <div class="table-meta">
+        Showing <strong><%= @deals.count %></strong> <%= "listing".pluralize(@deals.count) %>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="deals-table">
+          <thead>
+            <tr>
+              <th>Listing #</th>
+              <th>Title</th>
+              <th>Status</th>
+              <th>HubSpot ID</th>
+              <th>Last Seen</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @deals.each do |deal| %>
+              <tr>
+                <td class="listing-num"><%= deal.listing_num %></td>
+                <td class="title-cell"><%= deal.title %></td>
+                <td>
+                  <span class="status-badge status-<%= deal.status&.parameterize %>">
+                    <%= deal.status&.titleize %>
+                  </span>
+                </td>
+                <td class="hubspot-cell">
+                  <% if deal.hubspot_id.present? %>
+                    <span class="hubspot-id"><%= deal.hubspot_id %></span>
+                  <% else %>
+                    <span class="not-set">—</span>
+                  <% end %>
+                </td>
+                <td class="date-cell"><%= deal.last_seen&.strftime("%b %d, %Y") %></td>
+                <td class="date-cell"><%= deal.created_at.strftime("%b %d, %Y") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </main>
+</div>
